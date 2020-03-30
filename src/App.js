@@ -1,26 +1,161 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
-function App() {
+import React, { useEffect, useState } from 'react';
+import { Transition, animated } from 'react-spring/renderprops';
+import {
+  Title,
+  BackgroundImage,
+  TransparencyBackground,
+  CardContainer,
+  Container,
+  Text,
+  ButtonContainer,
+  Button,
+  Img
+} from './stylesMobile';
+
+import playstore from './assets/google-play-pt.png';
+import appstore from './assets/appstore.png';
+import scrollDown from './assets/scroll-down.png';
+
+import CardPerks from './components/CardPerks';
+import CardPrices from './components/CardPrices';
+import CardsPlans from './components/CardPlans';
+
+import Form from './components/Form';
+
+import useWindowsDimension from './hooks/useWindowsDimension';
+
+import Loader from 'react-loader-spinner';
+
+export default () => {
+  const { height } = useWindowsDimension();
+
+  // Check scroll position
+
+  const [scrollY, setScrollY] = useState(0);
+  const [showCardPerks, setShowCardPerks] = useState(false);
+  const [showCardPrices, setShowCardPrices] = useState(false);
+  const [showCardPlans, setShowCardPlans] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleScroll = () => {
+    setScrollY(window.pageYOffset);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  if (scrollY > 0 && !showCardPerks) setShowCardPerks(true);
+  if (scrollY > height * 0.44 - 10 && !showCardPrices) setShowCardPrices(true);
+  if (scrollY > height * 0.44 * 2 && !showCardPlans) setShowCardPlans(true);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <Container>
+      <BackgroundImage>
+        <TransparencyBackground>
+          <Title>laudry.me</Title>
+          <Text>Tenha uma vida mais livre!</Text>
+          <ButtonContainer>
+            <Button
+              height={'calc(60px * 0.8)'}
+              width={'calc(200px * 0.8)'}
+              img={playstore}
+              onClick={() => console.log('playstore')}
+            />
+            <Button
+              height={'calc(60px * .96)'}
+              width={'calc(200px * .96)'}
+              img={appstore}
+              onClick={() =>
+                alert('Desculpe. Ainda estamos trabalhando no app para iOS')
+              }
+            />
+          </ButtonContainer>
+          <Img img={scrollDown} />
+        </TransparencyBackground>
 
-export default App;
+        <CardContainer>
+          <Transition
+            native
+            items={showCardPerks}
+            from={{ marginLeft: -500 }}
+            enter={{ marginLeft: 0 }}
+          >
+            {show =>
+              show &&
+              (props => (
+                <animated.div style={props}>
+                  <CardPerks />
+                </animated.div>
+              ))
+            }
+          </Transition>
+
+          <Transition
+            native
+            items={showCardPrices}
+            from={{ marginLeft: -500 }}
+            enter={{ marginLeft: 0 }}
+          >
+            {show =>
+              show &&
+              (props => (
+                <animated.div style={props}>
+                  <CardPrices />
+                </animated.div>
+              ))
+            }
+          </Transition>
+
+          <Transition
+            native
+            items={showCardPlans}
+            from={{ marginLeft: -500 }}
+            enter={{ marginLeft: 0 }}
+          >
+            {show =>
+              show &&
+              (props => (
+                <animated.div style={props}>
+                  <CardsPlans />
+                </animated.div>
+              ))
+            }
+          </Transition>
+
+          {!showCardPlans ? (
+            <div style={{ height: 70 }} />
+          ) : (
+            <Form setIsLoading={setIsLoading} />
+          )}
+        </CardContainer>
+      </BackgroundImage>
+      {isLoading ? (
+        <div
+          style={{
+            position: 'fixed',
+            height: '100%',
+            width: '100%',
+            background: 'rgba(100,100,100,.6)'
+          }}
+        >
+          <Loader
+            type="Puff"
+            color="#00BFFF"
+            height={100}
+            width={100}
+            timeout={30000} //3 secs
+            style={{
+              position: 'fixed',
+              left: 'calc(50% - 50px)',
+              top: 'calc(50% - 50px)'
+            }}
+          />
+        </div>
+      ) : null}
+    </Container>
+  );
+};
