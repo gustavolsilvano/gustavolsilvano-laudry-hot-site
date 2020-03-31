@@ -65,7 +65,7 @@ export default ({ setIsLoading }) => {
           />
         </label>
         <label style={{ marginTop: '10px' }}>
-          Nome:
+          Teste:
           <input
             type="text"
             value={name}
