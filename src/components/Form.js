@@ -13,6 +13,7 @@ const Container = styled.div`
 
 const Title = styled.div`
   display: flex;
+  flex: 1;
   font-size: 20px;
   margin: 20px 20px 20px 20px;
 `;
