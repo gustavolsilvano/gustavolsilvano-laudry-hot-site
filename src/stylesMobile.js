@@ -1,13 +1,13 @@
-import styled from "styled-components";
-import home from "./assets/homeMobile.jpg";
+import styled from 'styled-components';
+import home from './assets/homeMobile.jpg';
 
 export const BackgroundImage = styled.section`
   display: flex;
-  height: 90vh;
+  height: 100vh;
   width: 100vw;
   flex-direction: column;
   background-image: ${`url(${home})`};
-  background-size: 100vw 90vh;
+  background-size: 100vw 100vh;
   background-repeat: no-repeat;
 `;
 
@@ -15,7 +15,7 @@ export const TransparencyBackground = styled.section`
   display: flex;
   flex-direction: column;
   width: 100vw;
-  height: 90vh;
+  height: 100vh;
   background: rgba(104, 180, 248, 0.6);
 `;
 

@@ -49,8 +49,8 @@ export default () => {
   }, []);
 
   if (scrollY > 0 && !showCardPerks) setShowCardPerks(true);
-  if (scrollY > height * 0.44 - 10 && !showCardPrices) setShowCardPrices(true);
-  if (scrollY > height * 0.44 * 2 && !showCardPlans) setShowCardPlans(true);
+  if (scrollY > height * 0.5 - 10 && !showCardPrices) setShowCardPrices(true);
+  if (scrollY > height * 0.5 * 2 && !showCardPlans) setShowCardPlans(true);
 
   return (
     <Container>
@@ -63,7 +63,9 @@ export default () => {
               height={'calc(60px * 0.8)'}
               width={'calc(200px * 0.8)'}
               img={playstore}
-              onClick={() => console.log('playstore')}
+              onClick={() =>
+                alert('Desculpe. Ainda estamos trabalhando no app para android')
+              }
             />
             <Button
               height={'calc(60px * .96)'}
