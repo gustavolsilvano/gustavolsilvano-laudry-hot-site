@@ -127,7 +127,7 @@ export default () => {
           </Transition>
 
           {!showCardPlans ? (
-            <div style={{ height: 70 }} />
+            <div style={{ height: 80 }} />
           ) : (
             <Form setIsLoading={setIsLoading} />
           )}

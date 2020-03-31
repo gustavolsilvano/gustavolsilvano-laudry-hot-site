@@ -23,7 +23,7 @@ const InputContainer = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  margin: 10px;
 `;
 
 export default ({ setIsLoading }) => {
@@ -65,7 +65,7 @@ export default ({ setIsLoading }) => {
           />
         </label>
         <label style={{ marginTop: '10px' }}>
-          Teste:
+          Nome:
           <input
             type="text"
             value={name}
@@ -81,5 +81,3 @@ export default ({ setIsLoading }) => {
     </Container>
   );
 };
-
-// TODO mostrar que está carregando, melhorar form
