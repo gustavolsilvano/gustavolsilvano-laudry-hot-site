@@ -49,8 +49,8 @@ export default () => {
   }, []);
 
   if (scrollY > 0 && !showCardPerks) setShowCardPerks(true);
-  if (scrollY > height * 0.5 - 10 && !showCardPrices) setShowCardPrices(true);
-  if (scrollY > height * 0.5 * 2 && !showCardPlans) setShowCardPlans(true);
+  if (scrollY > height * 0.3 && !showCardPrices) setShowCardPrices(true);
+  if (scrollY > height * 0.3 * 2 && !showCardPlans) setShowCardPlans(true);
 
   return (
     <Container>
