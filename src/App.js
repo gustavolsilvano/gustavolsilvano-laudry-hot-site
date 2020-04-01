@@ -87,62 +87,63 @@ export default () => {
           </ButtonContainer>
           <Img img={scrollDown} />
         </TransparencyBackground>
-
-        <CardContainer>
-          <Transition
-            native
-            items={showCardPerks}
-            from={{ marginLeft: -500 }}
-            enter={{ marginLeft: 0 }}
-          >
-            {show =>
-              show &&
-              (props => (
-                <animated.div style={props} ref={cardPerksRef}>
-                  <CardPerks />
-                </animated.div>
-              ))
-            }
-          </Transition>
-
-          <Transition
-            native
-            items={showCardPrices}
-            from={{ marginLeft: -500 }}
-            enter={{ marginLeft: 0 }}
-          >
-            {show =>
-              show &&
-              (props => (
-                <animated.div style={props}>
-                  <CardPrices />
-                </animated.div>
-              ))
-            }
-          </Transition>
-
-          <Transition
-            native
-            items={showCardPlans}
-            from={{ marginLeft: -500 }}
-            enter={{ marginLeft: 0 }}
-          >
-            {show =>
-              show &&
-              (props => (
-                <animated.div style={props}>
-                  <CardsPlans />
-                </animated.div>
-              ))
-            }
-          </Transition>
-        </CardContainer>
-        {!showCardPlans ? (
-          <div style={{ height: 80 }} />
-        ) : (
-          <Form setIsLoading={setIsLoading} />
-        )}
       </BackgroundImage>
+
+      <CardContainer>
+        <Transition
+          native
+          items={showCardPerks}
+          from={{ marginLeft: -500 }}
+          enter={{ marginLeft: 0 }}
+        >
+          {show =>
+            show &&
+            (props => (
+              <animated.div style={props} ref={cardPerksRef}>
+                <CardPerks />
+              </animated.div>
+            ))
+          }
+        </Transition>
+
+        <Transition
+          native
+          items={showCardPrices}
+          from={{ marginLeft: -500 }}
+          enter={{ marginLeft: 0 }}
+        >
+          {show =>
+            show &&
+            (props => (
+              <animated.div style={props}>
+                <CardPrices />
+              </animated.div>
+            ))
+          }
+        </Transition>
+
+        <Transition
+          native
+          items={showCardPlans}
+          from={{ marginLeft: -500 }}
+          enter={{ marginLeft: 0 }}
+        >
+          {show =>
+            show &&
+            (props => (
+              <animated.div style={props}>
+                <CardsPlans />
+              </animated.div>
+            ))
+          }
+        </Transition>
+      </CardContainer>
+
+      {!showCardPlans ? (
+        <div style={{ height: 80 }} />
+      ) : (
+        <Form setIsLoading={setIsLoading} />
+      )}
       {isLoading ? (
         <div
           style={{

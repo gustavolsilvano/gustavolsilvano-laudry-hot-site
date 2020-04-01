@@ -14,6 +14,7 @@ export const BackgroundImage = styled.section`
 export const TransparencyBackground = styled.section`
   display: flex;
   flex-direction: column;
+  flex: 1;
   width: 100vw;
   height: 100vh;
   background: rgba(104, 180, 248, 0.6);
@@ -31,14 +32,14 @@ export const Title = styled.h1`
 
 export const CardContainer = styled.div`
   display: flex;
-  width: 95vw;
+  width: 100vw;
   flex-direction: column;
-  flex: 1;
 `;
 
 export const Container = styled.div`
   display: flex;
   flex: 1;
+  flex-direction: column;
 `;
 
 export const Text = styled.div`
