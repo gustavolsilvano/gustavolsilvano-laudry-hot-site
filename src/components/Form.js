@@ -24,7 +24,7 @@ const InputContainer = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 10px;
+  margin-top: 40px;
 `;
 
 export default ({ setIsLoading }) => {
