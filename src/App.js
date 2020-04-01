@@ -60,7 +60,7 @@ export default () => {
 
   return (
     <Container>
-      <BackgroundImage>
+      {/* <BackgroundImage>
         <TransparencyBackground>
           <Title>laudry.me</Title>
           <Text>Tenha uma vida mais livre!</Text>
@@ -163,7 +163,8 @@ export default () => {
             }}
           />
         </div>
-      ) : null}
+      ) : null} */}
+      <Form />
     </Container>
   );
 };

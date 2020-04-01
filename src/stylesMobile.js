@@ -38,7 +38,7 @@ export const CardContainer = styled.div`
 
 export const Container = styled.div`
   display: flex;
-  flex: 1px;
+  flex: 1;
 `;
 
 export const Text = styled.div`
