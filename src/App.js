@@ -1,6 +1,6 @@
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Transition, animated } from 'react-spring/renderprops';
 import {
   Title,
@@ -29,7 +29,13 @@ import useWindowsDimension from './hooks/useWindowsDimension';
 import Loader from 'react-loader-spinner';
 
 export default () => {
+  const cardPerksRef = useRef(null);
+
   const { height } = useWindowsDimension();
+
+  const isBottom = el => {
+    return el.getBoundingClientRect().bottom;
+  };
 
   // Check scroll position
 
@@ -89,7 +95,7 @@ export default () => {
             {show =>
               show &&
               (props => (
-                <animated.div style={props}>
+                <animated.div style={props} ref={cardPerksRef}>
                   <CardPerks />
                 </animated.div>
               ))
