@@ -3,12 +3,12 @@ import home from './assets/homeMobile.jpg';
 
 export const BackgroundImage = styled.section`
   display: flex;
-  height: 100vh;
   width: 100vw;
   flex-direction: column;
   background-image: ${`url(${home})`};
   background-size: 100vw 100vh;
   background-repeat: no-repeat;
+  flex: 1;
 `;
 
 export const TransparencyBackground = styled.section`

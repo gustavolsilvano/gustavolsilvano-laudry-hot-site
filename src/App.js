@@ -60,7 +60,7 @@ export default () => {
 
   return (
     <Container>
-      {/* <BackgroundImage>
+      <BackgroundImage>
         <TransparencyBackground>
           <Title>laudry.me</Title>
           <Text>Tenha uma vida mais livre!</Text>
@@ -133,13 +133,12 @@ export default () => {
               ))
             }
           </Transition>
-
-          {!showCardPlans ? (
-            <div style={{ height: 80 }} />
-          ) : (
-            <Form setIsLoading={setIsLoading} />
-          )}
         </CardContainer>
+        {!showCardPlans ? (
+          <div style={{ height: 80 }} />
+        ) : (
+          <Form setIsLoading={setIsLoading} />
+        )}
       </BackgroundImage>
       {isLoading ? (
         <div
@@ -163,8 +162,7 @@ export default () => {
             }}
           />
         </div>
-      ) : null} */}
-      <Form />
+      ) : null}
     </Container>
   );
 };
