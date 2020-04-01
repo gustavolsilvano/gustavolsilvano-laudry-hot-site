@@ -34,8 +34,11 @@ export default () => {
   const { height } = useWindowsDimension();
 
   const isBottom = el => {
-    return el.getBoundingClientRect().bottom;
+    return el.getBoundingClientRect().bottom <= window.inner;
   };
+
+  if (cardPerksRef.current) console.log(isBottom(cardPerksRef.current));
+  console.log(window.innerHeight);
 
   // Check scroll position
 

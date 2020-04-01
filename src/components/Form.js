@@ -8,7 +8,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100vw;
-  height: 100vh;
+  flex: 1;
 `;
 
 const Title = styled.h1`
@@ -24,7 +24,7 @@ const InputContainer = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 40px;
+  margin: 10px;
 `;
 
 export default ({ setIsLoading }) => {
