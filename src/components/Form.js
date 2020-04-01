@@ -6,9 +6,9 @@ import server from '../api/server';
 
 const Container = styled.div`
   display: flex;
-  flex: 1;
   flex-direction: column;
   width: 100vw;
+  height: 100vh;
 `;
 
 const Title = styled.h1`

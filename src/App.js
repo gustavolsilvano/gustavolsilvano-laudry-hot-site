@@ -128,11 +128,11 @@ export default () => {
             }
           </Transition>
 
-          {/* {!showCardPlans ? (
+          {!showCardPlans ? (
             <div style={{ height: 80 }} />
-          ) : ( */}
-          <Form setIsLoading={setIsLoading} />
-          {/* )} */}
+          ) : (
+            <Form setIsLoading={setIsLoading} />
+          )}
         </CardContainer>
       </BackgroundImage>
       {isLoading ? (
