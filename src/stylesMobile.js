@@ -33,6 +33,7 @@ export const CardContainer = styled.div`
   display: flex;
   width: 95vw;
   flex-direction: column;
+  flex: 1;
 `;
 
 export const Container = styled.div`
