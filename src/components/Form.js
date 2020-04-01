@@ -8,7 +8,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100vw;
-  flex: 1;
+  height: 40vh;
 `;
 
 const Title = styled.h1`
