@@ -9,15 +9,13 @@ const Container = styled.div`
   flex: 1;
   flex-direction: column;
   width: 100vw;
-  border: solid;
 `;
 
-const Title = styled.div`
+const Title = styled.h1`
   display: flex;
   flex: 1;
   font-size: 20px;
   margin: 20px;
-  border: solid;
 `;
 
 const InputContainer = styled.form`
@@ -27,7 +25,6 @@ const InputContainer = styled.form`
   justify-content: center;
   align-items: center;
   margin: 10px;
-  border: solid;
 `;
 
 export default ({ setIsLoading }) => {
