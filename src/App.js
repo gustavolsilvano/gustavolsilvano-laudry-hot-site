@@ -29,41 +29,40 @@ import useWindowsDimension from './hooks/useWindowsDimension';
 import Loader from 'react-loader-spinner';
 
 export default () => {
+  const mainDivRef = useRef(null);
   const cardPerksRef = useRef(null);
+  const cardPlansRef = useRef(null);
+  const cardPricesRef = useRef(null);
 
   const { height } = useWindowsDimension();
 
   const isBottom = el => {
-    return el.getBoundingClientRect().bottom <= window.inner;
+    return el.getBoundingClientRect().bottom <= window.innerHeight;
   };
-
-  if (cardPerksRef.current) console.log(isBottom(cardPerksRef.current));
-  console.log(window.innerHeight);
 
   // Check scroll position
 
-  const [scrollY, setScrollY] = useState(0);
   const [showCardPerks, setShowCardPerks] = useState(false);
   const [showCardPrices, setShowCardPrices] = useState(false);
   const [showCardPlans, setShowCardPlans] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleScroll = () => {
-    setScrollY(window.pageYOffset);
-  };
-
   useEffect(() => {
+    const handleScroll = () => {
+      if (mainDivRef.current) setShowCardPerks(true);
+      if (cardPerksRef.current) setShowCardPrices(true);
+      if (cardPricesRef.current) setShowCardPlans(true);
+    };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  if (scrollY > 0 && !showCardPerks) setShowCardPerks(true);
-  if (scrollY > height * 0.3 && !showCardPrices) setShowCardPrices(true);
-  if (scrollY > height * 0.3 * 2 && !showCardPlans) setShowCardPlans(true);
-
+  // if (scrollY > 0 && !showCardPerks) setShowCardPerks(true);
+  // if (scrollY > height * 0.3 && !showCardPrices) setShowCardPrices(true);
+  // if (scrollY > height * 0.3 * 2 && !showCardPlans) setShowCardPlans(true);
   return (
     <Container>
-      <BackgroundImage>
+      <BackgroundImage ref={mainDivRef}>
         <TransparencyBackground>
           <Title>laudry.me</Title>
           <Text>Tenha uma vida mais livre!</Text>
@@ -115,7 +114,7 @@ export default () => {
           {show =>
             show &&
             (props => (
-              <animated.div style={props}>
+              <animated.div style={props} ref={cardPricesRef}>
                 <CardPrices />
               </animated.div>
             ))
@@ -131,7 +130,7 @@ export default () => {
           {show =>
             show &&
             (props => (
-              <animated.div style={props}>
+              <animated.div style={props} ref={cardPlansRef}>
                 <CardsPlans />
               </animated.div>
             ))
@@ -140,7 +139,7 @@ export default () => {
       </CardContainer>
 
       {!showCardPlans ? (
-        <div style={{ height: 80 }} />
+        <div style={{ height: 20 }} />
       ) : (
         <Form setIsLoading={setIsLoading} />
       )}
