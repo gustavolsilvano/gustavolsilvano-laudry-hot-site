@@ -24,20 +24,18 @@ import CardsPlans from './components/CardPlans';
 
 import Form from './components/Form';
 
-import useWindowsDimension from './hooks/useWindowsDimension';
-
 import Loader from 'react-loader-spinner';
 
 export default () => {
+  const offset = 200;
+
   const mainDivRef = useRef(null);
   const cardPerksRef = useRef(null);
   const cardPlansRef = useRef(null);
   const cardPricesRef = useRef(null);
 
-  const { height } = useWindowsDimension();
-
   const isBottom = el => {
-    return el.getBoundingClientRect().bottom <= window.innerHeight;
+    return el.getBoundingClientRect().bottom <= window.innerHeight - offset;
   };
 
   // Check scroll position
@@ -49,9 +47,12 @@ export default () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (mainDivRef.current) setShowCardPerks(true);
-      if (cardPerksRef.current) setShowCardPrices(true);
-      if (cardPricesRef.current) setShowCardPlans(true);
+      if (mainDivRef.current && isBottom(mainDivRef.current))
+        setShowCardPerks(true);
+      if (cardPerksRef.current && isBottom(cardPerksRef.current))
+        setShowCardPrices(true);
+      if (cardPricesRef.current && isBottom(cardPricesRef.current))
+        setShowCardPlans(true);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -139,7 +140,7 @@ export default () => {
       </CardContainer>
 
       {!showCardPlans ? (
-        <div style={{ height: 20 }} />
+        <div style={{ height: offset }} />
       ) : (
         <Form setIsLoading={setIsLoading} />
       )}
