@@ -27,7 +27,7 @@ import Form from './components/Form';
 import Loader from 'react-loader-spinner';
 
 export default () => {
-  const offset = 200;
+  const offset = 100;
 
   const mainDivRef = useRef(null);
   const cardPerksRef = useRef(null);
