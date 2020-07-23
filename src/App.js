@@ -11,7 +11,7 @@ import {
   Text,
   ButtonContainer,
   Button,
-  Img
+  Img,
 } from './stylesMobile';
 
 import playstore from './assets/google-play-pt.png';
@@ -34,7 +34,7 @@ export default () => {
   const cardPlansRef = useRef(null);
   const cardPricesRef = useRef(null);
 
-  const isBottom = el => {
+  const isBottom = (el) => {
     return el.getBoundingClientRect().bottom <= window.innerHeight - offset;
   };
 
@@ -58,9 +58,6 @@ export default () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // if (scrollY > 0 && !showCardPerks) setShowCardPerks(true);
-  // if (scrollY > height * 0.3 && !showCardPrices) setShowCardPrices(true);
-  // if (scrollY > height * 0.3 * 2 && !showCardPlans) setShowCardPlans(true);
   return (
     <Container>
       <BackgroundImage ref={mainDivRef}>
@@ -96,9 +93,9 @@ export default () => {
           from={{ marginLeft: -500 }}
           enter={{ marginLeft: 0 }}
         >
-          {show =>
+          {(show) =>
             show &&
-            (props => (
+            ((props) => (
               <animated.div style={props} ref={cardPerksRef}>
                 <CardPerks />
               </animated.div>
@@ -112,9 +109,9 @@ export default () => {
           from={{ marginLeft: -500 }}
           enter={{ marginLeft: 0 }}
         >
-          {show =>
+          {(show) =>
             show &&
-            (props => (
+            ((props) => (
               <animated.div style={props} ref={cardPricesRef}>
                 <CardPrices />
               </animated.div>
@@ -128,9 +125,9 @@ export default () => {
           from={{ marginLeft: -500 }}
           enter={{ marginLeft: 0 }}
         >
-          {show =>
+          {(show) =>
             show &&
-            (props => (
+            ((props) => (
               <animated.div style={props} ref={cardPlansRef}>
                 <CardsPlans />
               </animated.div>
@@ -150,7 +147,7 @@ export default () => {
             position: 'fixed',
             height: '100%',
             width: '100%',
-            background: 'rgba(100,100,100,.6)'
+            background: 'rgba(100,100,100,.6)',
           }}
         >
           <Loader
@@ -162,7 +159,7 @@ export default () => {
             style={{
               position: 'fixed',
               left: 'calc(50% - 50px)',
-              top: 'calc(50% - 50px)'
+              top: 'calc(50% - 50px)',
             }}
           />
         </div>

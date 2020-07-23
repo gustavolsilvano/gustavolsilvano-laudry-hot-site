@@ -1,10 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Card = styled.div`
   display: flex;
   width: 100vw;
   height: 44vh;
-  background: #362929;
+  background: #686868;
   padding: 20px 0px 20px 0px;
   flex-direction: column;
 `;
